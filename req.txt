@@ -1,0 +1,7 @@
+streamlit
+pandas
+pykrx
+streamlit-aggrid
+httpx
+aiofiles
+beautifulsoup4
