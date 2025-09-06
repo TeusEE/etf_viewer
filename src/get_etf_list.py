@@ -10,6 +10,6 @@ for ticker in etf_df:
     etf_info.append([ticker, name])
 
 import csv
-with open('output.csv', 'w', newline='', encoding='utf-8') as csvfile:
+with open('./etf_list.csv', 'w', newline='', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerows(etf_info)

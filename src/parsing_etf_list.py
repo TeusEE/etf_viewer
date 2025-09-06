@@ -1,5 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
 import csv
 import aiofiles
 import asyncio
@@ -16,7 +14,10 @@ async def fetch_and_save(tk_num):
 
 
 async def main():   
-    with open('etf_list.csv', 'r', encoding='utf-8') as csvfile:
+    import os
+    if os.path.isdir("./database") != False:
+        os.mkdir("./database")
+    with open('./etf_list.csv', 'r', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader) 
 
