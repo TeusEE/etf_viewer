@@ -23,17 +23,11 @@ df = df.rename(columns={
 df["시가총액"] = (
     df["시가총액"]    
     .astype(float)                       # 한 번에 float 로 변환
-    .floordiv(10_000)                    # 10,000 단위 정수화
-    .astype(int)                         # 최종 int dtype
+    .floordiv(10_000)                    # 10,000 단위 정수화    
 )
 
-df["시가총액"] = pd.to_numeric(
-    df["시가총액"],
-    errors="coerce"
-).fillna(0).astype(int)
-
 # ★ dtype 검증
-assert pd.api.types.is_integer_dtype(df["시가총액"]), "시가총액 컬럼이 정수형이 아닙니다!"
+assert pd.api.types.is_float_dtype(df["시가총액"]), "시가총액 컬럼이 정수형이 아닙니다!"
     
 def get_price():
     import requests
@@ -73,8 +67,7 @@ with col_left:
         type=["numericColumn"],          # 숫자 컬럼 타입
         headerName="시가총액(억)",
         sortable=True,
-        filter="agNumberColumnFilter",   # 숫자 전용 필터
-        valueParser="Number(newValue)"   # 편집 시 숫자로 파싱 (편집 가능하게 할 때)
+        filter="agNumberColumnFilter",   # 숫자 전용 필터        
     )
     
     initial_sort = [
