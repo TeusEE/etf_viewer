@@ -15,8 +15,14 @@ async def fetch_and_save(tk_num):
 
 async def main():   
     import os
-    if os.path.isdir("./database") != False:
+    import shutil
+    try:
+        shutil.rmtree("./database")
+    except Exception as e:
+        print(e)
+    finally:
         os.mkdir("./database")
+        
     with open('./etf_list.csv', 'r', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader) 
