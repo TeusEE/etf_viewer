@@ -3,15 +3,15 @@
 
 # 최초실행
 ```cmd
+git clone https://github.com/TeusEE/etf_viewer.git
+cd etf_viewer
 python -m pip install --upgrade pip setuptools
 python -m pip install -r req.txt
-python src/get_etf_list.py
-python src/parsing_etf_list.py
-python src/exec_from_etflist.py
-streamlit run app.py
+etf_viewer
 ```
 
 # 이후 실행 시
 ```cmd
-streamlit run app.py
+cd etf_viewer
+etf_viewer
 ```
