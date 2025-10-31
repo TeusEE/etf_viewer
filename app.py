@@ -49,7 +49,7 @@ if "selected_code" not in st.session_state:
 
 # ────────────────────── 레이아웃 (좌·우 2열) ──────────────────────
 col_left, col_right = st.columns([3, 4])   # 비율을 바꾸고 싶다면 [2,1] 등으로 조정
-
+etf_dividend_url = "https://www.k-etf.com/calendar/dividend"
 # ─ 왼쪽: 테이블 ─
 with col_left:    
     st.subheader("ETF 정보")
