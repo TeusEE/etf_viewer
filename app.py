@@ -102,7 +102,7 @@ with col_left:
     elif hasattr(selected_rows, "empty") and not selected_rows.empty:
         selected_code = selected_rows.iloc[0]["etf명"]
         st.session_state["selected_code"] = selected_code    
-   period = st.selectbox(
+    period = st.selectbox(
         "기간을 선택해주세요",
         ["1", "3", "12", "36", "120"]
     )
