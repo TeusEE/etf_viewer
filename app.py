@@ -102,11 +102,27 @@ with col_left:
     elif hasattr(selected_rows, "empty") and not selected_rows.empty:
         selected_code = selected_rows.iloc[0]["etf명"]
         st.session_state["selected_code"] = selected_code    
-    st.write("현재 달러 환율 : {}".format(st.session_state["usd_ratio"]))
+   period = st.selectbox(
+        "기간을 선택해주세요",
+        ["1", "3", "12", "36", "120"]
+    )
+    conv = {
+        "1" : "month",
+        "3" : "month3",
+        "12" : "year",
+        "36" : "year3",
+        "120" : "year10"
+    }
     if st.button("환율정보 갱신"):
-        change_price(st.session_state)    
-    st.image("https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/FX_USDX.png", width='stretch')    
-    st.image("https://ssl.pstatic.net/imgfinance/chart/marketindex/area/month3/FX_USDKRW.png", width='stretch')
+        change_price(st.session_state)       
+    st.write("현재 달러 환율 : {}".format(st.session_state["usd_ratio"]))
+    
+    st.markdown("달러인덱스")
+    st.image(f"https://ssl.pstatic.net/imgfinance/chart/marketindex/area/{conv[period]}/FX_USDX.png", width='stretch')    
+    st.markdown("엔달러 환율")
+    st.image(f"https://ssl.pstatic.net/imgfinance/chart/marketindex/area/{conv[period]}/FX_USDJPY.png", width='stretch')        
+    st.markdown("원달러 환율")
+    st.image(f"https://ssl.pstatic.net/imgfinance/chart/marketindex/area/{conv[period]}/FX_USDKRW.png", width='stretch')
     
 
 # ─ 오른쪽: iframe ─
